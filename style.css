@@ -1,0 +1,64 @@
+html {
+  /* To make use of full height of page*/
+  min-height: 100%;
+  margin: 0;
+}
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+.pageHeader,
+.pageFooter {
+  background-color: #999;
+  color: #fff;
+  border-radius: 5px;
+  padding: 3rem;
+  font-size: 150%;
+  text-align: center;
+}
+
+.pageFooter{
+    font-size: 90%;
+}
+
+.pageHeader {
+  grid-area: header;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+
+}
+
+.headerText {
+  text-align: center;
+  margin: 0;
+}
+
+.fit-picture {
+  width: 52px;
+ transform: translateY(30%);
+}
+
+.gameArea {
+  grid-area: game;
+  height: 60vh;
+}
+
+.pageFooter {
+  grid-area: footer;
+  height: 2vh;
+}
+
+.bodyWrapper {
+  height: 100%;
+  display: grid;
+  row-gap: 0.7rem;
+  background-color: #fff;
+  color: #444;
+  grid-template-columns: [first] 5% [second] 5% [third] 80% [third] 5% [fourth] 5%;
+  grid-template-areas:
+    ". header header header ."
+    ". . game . ."
+    ". footer footer footer .";
+}
