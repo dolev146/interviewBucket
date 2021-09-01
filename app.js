@@ -43,7 +43,7 @@ playBtn.addEventListener("click", () => {
       hero.style.left = x_pos + "px";
     }
   });
-  document.addEventListener("touchstart", (e) => {
+  document.addEventListener("touchmove", (e) => {
     const x_pos = e.touches[0].clientX;
     if (rightBorder <= x_pos + 75) {
     } else if (leftBorder >= x_pos - 70) {
