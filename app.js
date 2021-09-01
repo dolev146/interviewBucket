@@ -44,8 +44,12 @@ playBtn.addEventListener("click", () => {
     }
   });
   document.addEventListener("touchstart", (e) => {
-    const x = e.touches[0].clientX;
-    hero.style.left = x + "px";
+    const x_pos = e.touches[0].clientX;
+    if (rightBorder <= x_pos + 75) {
+    } else if (leftBorder >= x_pos - 70) {
+    } else {
+      hero.style.left = x_pos + "px";
+    }
   });
 
   // let currentShooterIndex = 202;
