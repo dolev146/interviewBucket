@@ -43,6 +43,7 @@ body {
 .gameArea {
   grid-area: game;
   height: 60vh;
+  border: #444 solid 2px;
 }
 
 .pageFooter {
