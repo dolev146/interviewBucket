@@ -118,14 +118,15 @@ body {
 
 
 /* invaders game !!! */
+
 .results{
   grid-area: scores;
   text-align: center;
 }
 
 .grid{
-   width: 500px;
-  height: 300px;
+   width: 100%;
+  height: 40vh;
   border: solid black 1px;
   display: flex;
   flex-wrap: wrap;
