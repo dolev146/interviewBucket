@@ -43,7 +43,8 @@ body {
   grid-area: game;
   height: 60vh;
   border: #444 solid 2px;
-  background-image: radial-gradient(blue, white);
+  
+  /* background-image: radial-gradient(blue, white); */
   /* background-image: url("./img/background.jpg"); */
   background-repeat: no-repeat;
   background-color: #cccccc; /* Used if the image is unavailable */
@@ -140,6 +141,11 @@ body {
 .grid div {
   width: 20px;
   height: 20px;
+}
+
+.playAgain{
+  width: 40%;
+  height: 15%;
 }
 
 
