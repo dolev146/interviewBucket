@@ -1,4 +1,4 @@
-import { getRandomInt } from "./randomInt";
+// import { getRandomInt } from "./randomInt";
 
 // we have three screens
 // first is home screen with 2 buttons
@@ -84,68 +84,63 @@ const playTheGame = () => {
     }
   });
 
+  const getRandomInt = () => {
+    return Math.floor(Math.random() * (10 - 1 + 1) + 1);
+  };
   // https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
-  /**
-   * Returns a random integer between min (inclusive) and max (inclusive).
-   * The value is no lower than min (or the next integer greater than min
-   * if min isn't an integer) and no greater than max (or the next integer
-   * lower than max if max isn't an integer).
-   * Using Math.round() will give you a non-uniform distribution!
-   */
-  
 
-  if (isPhone) {
-    const getNumberPosMobile = () => {
-      let x =
-        Math.floor(Math.random() * (rightBorder - 20 - leftBorder + 1)) +
-        rightBorder;
-      if (x <= 340) {
-        x = 535;
-      }
-      return x - 290;
-    };
-
-    const numberRainMobile = () => {
-      const numberDiv = document.createElement("span");
-      numberDiv.textContent = `${getRandomInt()}`;
-      numberDiv.style.position = "absolute";
-      numberDiv.style.left = `${getNumberPosMobile()}px`;
-      numberDiv.style.top = "280px";
-      numberDiv.style.color = "black";
-      grid.appendChild(numberDiv);
-      let numberFall = setInterval(() => {
-        if (numberDiv.offsetTop > 405 && numberDiv.offsetTop < 455) {
-          // console.log(numberDiv.offsetLeft)
-          if (
-            hero.offsetLeft + 25 > numberDiv.offsetLeft &&
-            hero.offsetLeft - 25 < numberDiv.offsetLeft
-          ) {
-            console.log("colution");
-            if (parseInt(numberDiv.textContent) !== nextNumberToCollect) {
-              clearInterval(numberFall);
-              clearInterval(rain);
-              nextNumberToCollect = 1;
-              game.innerHTML = `<h1 class="scores" >You <h1 class="results" >Lose!</h1> </h1> <button class="grid btn btn-primary playAgain" >Play Again</button> `;
-              const playAgainBtn = document.querySelector(".playAgain");
-              playAgainBtn.addEventListener("click", playTheGame);
-            } else {
+  const numberRain = () => {
+    let x_grid_column = Math.floor(Math.random() * (24 - 2 + 1)) + 2;
+    const numberDiv = document.createElement("span");
+    numberDiv.textContent = `${getRandomInt()}`;
+    numberDiv.style.gridColumnStart = x_grid_column;
+    numberDiv.style.color = "black";
+    grid.appendChild(numberDiv);
+    numberDiv.style.left = `${numberDiv.offsetLeft}px`;
+    numberDiv.style.top = `${numberDiv.offsetTop}px`;
+    numberDiv.style.position = "absolute";
+    let numberFall = setInterval(() => {
+ 
+      if (
+        numberDiv.offsetTop > gameboard.bottom - 110 &&
+        numberDiv.offsetTop < gameboard.bottom
+      ) {
+     
+        if (
+          hero.offsetLeft + 25 > numberDiv.offsetLeft &&
+          hero.offsetLeft - 25 < numberDiv.offsetLeft
+        ) {
+         
+          if (parseInt(numberDiv.textContent) !== nextNumberToCollect) {
+            clearInterval(numberFall);
+            clearInterval(rain);
+            nextNumberToCollect = 1;
+            game.innerHTML = `<h1 class="scores" >You <h1 class="results" >Lose!</h1> </h1> <button class="grid btn btn-primary playAgain" >Play Again</button> `;
+            const playAgainBtn = document.querySelector(".playAgain");
+            playAgainBtn.addEventListener("click", playTheGame);
+          } else if (parseInt(numberDiv.textContent) === 10) {
+            clearInterval(numberFall);
+            clearInterval(rain);
+            nextNumberToCollect = 1;
+            game.innerHTML = `<h1 class="scores" >You <h1 class="results" >Win!</h1> </h1> <button class="grid btn btn-primary playAgain" >Play Again</button> `;
+            const playAgainBtn = document.querySelector(".playAgain");
+            playAgainBtn.addEventListener("click", playTheGame);
+          } else {
             numberDiv.parentElement.removeChild(numberDiv);
             nextNumberToCollect++;
-            results.innerHTML = nextNumberToCollect;  
-            }
-            
+            results.innerHTML = nextNumberToCollect;
           }
-          // if(hero.offsetLeft numberDiv.offsetLeft)
         }
-        numberDiv.style.top = `${numberDiv.offsetTop + 5}px`;
-        if (numberDiv.offsetTop === 480) {
-          numberDiv.parentElement.removeChild(numberDiv);
-        }
-      }, 100);
-    };
-    
-    let rain = setInterval(numberRainMobile, 1000);
-  }
+        // if(hero.offsetLeft numberDiv.offsetLeft)
+      }
+      numberDiv.style.top = `${numberDiv.offsetTop + 5}px`;
+      if (numberDiv.offsetTop > gameboard.bottom - 80) {
+        numberDiv.parentElement.removeChild(numberDiv);
+      }
+    }, 100);
+  };
+  // numberRain();
+  let rain = setInterval(numberRain, 1000);
 };
 
 playBtn.addEventListener("click", playTheGame);

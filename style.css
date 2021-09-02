@@ -43,7 +43,7 @@ body {
   grid-area: game;
   height: 60vh;
   border: #444 solid 2px;
-  
+
   /* background-image: radial-gradient(blue, white); */
   /* background-image: url("./img/background.jpg"); */
   background-repeat: no-repeat;
@@ -116,26 +116,23 @@ body {
     ". footer footer footer .";
 }
 
-
-
 /* invaders game !!! */
 
-.results{
+.results {
   grid-area: number;
   text-align: center;
   display: inline;
 }
-.scores{
+.scores {
   grid-area: scores;
-  
 }
 
-.grid{
-   width: 96%;
+.grid {
+  width: 96%;
   height: 40vh;
   border: solid black 1px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(25, 1fr);
   grid-area: gameboard;
 }
 .grid div {
@@ -143,51 +140,40 @@ body {
   height: 20px;
 }
 
-.playAgain{
+.playAgain {
   width: 40%;
   height: 15%;
 }
 
-
-
 /* small */
 @media screen and (max-width: 500px) {
- .pageHeader
-{
-  font-size: large;
-  margin-right: 3px;
-} 
+  .pageHeader {
+    font-size: large;
+    margin-right: 3px;
+  }
 
-
-.pageFooter{
-font-size: medium; 
-padding: 10px;
-} 
-
+  .pageFooter {
+    font-size: medium;
+    padding: 10px;
+  }
 }
 
 /* medium */
 @media screen and (max-width: 768px) {
-.pageHeader
-{
-  font-size: large;
-  margin-right: 3px;
-} 
+  .pageHeader {
+    font-size: large;
+    margin-right: 3px;
+  }
 
-.fit-picture{
-   transform: translateY(0%);
-}
-
+  .fit-picture {
+    transform: translateY(0%);
+  }
 }
 
 /* large */
-@media screen and (min-width: 769px) and (max-width : 1170px) {
- 
-
+@media screen and (min-width: 769px) and (max-width: 1170px) {
 }
 
 /* Xllarge */
 @media screen and (min-width: 1171px) {
- 
-
 }
