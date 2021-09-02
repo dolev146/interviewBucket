@@ -30,18 +30,18 @@ const InstructionsBtn = document.querySelector(".btn-info");
 
 const playTheGame = () => {
   // inserting the play screen
-  game.style.gridTemplateColumns = "7% 20% 15% 5% 50% 3%";
+  game.style.gridTemplateColumns = "7% 35% 5% 50% 3%";
   game.style.gridTemplateRows = "20% 80% ";
   game.style.gridTemplateAreas =
-    '". scores  scores  number . ." ". gameboard gameboard gameboard gameboard ."  ';
+    '". scores  . . ." ". gameboard gameboard gameboard  ."  ';
   game.style.alignItems = "start";
 
-  game.innerHTML = `<h1 class="scores" >Next: <h1 class="results" >${nextNumberToCollect}</h1> </h1> 
+  game.innerHTML = `<h1 class="scores" >Next: ${nextNumberToCollect}</h1> 
           <div class="grid"></div>   
   `;
-  const results = document.querySelector(".results");
+  const scores = document.querySelector(".scores");
   const grid = document.querySelector(".grid");
-  const resultsDisplay = document.querySelector(".results");
+  
   const hero = document.createElement("span");
   hero.id = "hero";
   hero.style.backgroundImage = "url(./img/logoNoBg.png)";
@@ -115,20 +115,20 @@ const playTheGame = () => {
             clearInterval(numberFall);
             clearInterval(rain);
             nextNumberToCollect = 1;
-            game.innerHTML = `<h1 class="scores" >You <h1 class="results" >Lose!</h1> </h1> <button class="grid btn btn-primary playAgain" >Play Again</button> `;
+            game.innerHTML = `<h1 class="scores" >You Lose! </h1> <button class="grid btn btn-primary playAgain" >Play Again</button> `;
             const playAgainBtn = document.querySelector(".playAgain");
             playAgainBtn.addEventListener("click", playTheGame);
           } else if (parseInt(numberDiv.textContent) === 10) {
             clearInterval(numberFall);
             clearInterval(rain);
             nextNumberToCollect = 1;
-            game.innerHTML = `<h1 class="scores" >You <h1 class="results" >Win!</h1> </h1> <button class="grid btn btn-primary playAgain" >Play Again</button> `;
+            game.innerHTML = `<h1 class="scores" >You Win!</h1> <button class="grid btn btn-primary playAgain" >Play Again</button> `;
             const playAgainBtn = document.querySelector(".playAgain");
             playAgainBtn.addEventListener("click", playTheGame);
           } else {
             numberDiv.parentElement.removeChild(numberDiv);
             nextNumberToCollect++;
-            results.innerHTML = nextNumberToCollect;
+            scores.innerHTML = `<h1 class="scores" >Next: ${nextNumberToCollect}</h1>`;
           }
         }
         // if(hero.offsetLeft numberDiv.offsetLeft)
