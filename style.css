@@ -13,7 +13,7 @@ body {
   background-color: #999;
   color: #fff;
   border-radius: 5px;
-  padding: 3rem;
+  padding: 2.5rem;
   font-size: 150%;
   text-align: center;
 }
@@ -142,19 +142,46 @@ body {
   height: 20px;
 }
 
-.invader {
-  background-color: purple;
-  border-radius: 10px;
+
+
+/* small */
+@media screen and (max-width: 500px) {
+ .pageHeader
+{
+  font-size: large;
+  margin-right: 3px;
+} 
+
+
+.pageFooter{
+font-size: medium; 
+padding: 10px;
+} 
+
 }
 
-.shooter {
-  background-color: green;  
+/* medium */
+@media screen and (max-width: 768px) {
+.pageHeader
+{
+  font-size: large;
+  margin-right: 3px;
+} 
+
+.fit-picture{
+   transform: translateY(0%);
 }
 
-.laser {
-  background-color:  rgb(160, 147, 123);
 }
 
-.boom {
-  background-color: red;
+/* large */
+@media screen and (min-width: 769px) and (max-width : 1170px) {
+ 
+
+}
+
+/* Xllarge */
+@media screen and (min-width: 1171px) {
+ 
+
 }
